@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>HTML연습</title>
+        <style>
+            * {
+                margin : 0px;
+            }
+            header {
+                background-color : skyblue;
+                color : white;
+                height : 275px;
+                
+            }
+            footer {
+                background-color : lightgray;
+                color : white;
+                height : 30px;
+                clear : both;
+            }
+            nav {
+                background-color : thistle;
+                height : 30px;
+                
+            }
+            header, footer {
+                text-align: center;
+            }
+            h1 {
+                background-color: skyblue;
+            }
+            section {
+                border-style: solid;
+                border-width : 1px;
+                border-color : thistle;
+                padding : 10px;
+                margin : 10px;
+                float : left;
+                width: 45%;
+            }
+            nav>a, .c1 {
+                color : white;
+                text-decoration : none;
+            }
+            
+            nav>a {
+                display : inline-block;
+                height : 30px;
+            }
+            a:hover {
+                color : thistle;
+                background-color: white;
+            }
+            .c2 {
+                float : left;
+                padding : 20px;
+            }
+            ul {
+                padding : 20px;
+            }
+            #name {
+                padding : 50px;
+            }
+        </style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    </head>
+    <body>
+        <header>
+            <div class='c2'><img src='./img/person.png'></div>
+            <div id='name' class='c2'><h1>MGH</h1><h2>민경훈</h2></div>
+            
+        </header>
+
+        <nav>
+            <a href='#s1'>[개인정보]</a> <a href='#s2'>[학력사항]</a> <a href='#s3'>[자격사항]</a> <a href='#s4'>[자기소개]</a>
+        </nav>
+        <section id='s1'>
+            <h1 class='c1'>개인정보</h1>
+            <div><i class="material-icons">label</i>민경훈</div>
+            <div><i class="material-icons">label</i>010-2345-4567</div>
+            <div><i class="material-icons">label</i>buzzzz@naver.com</div>
+            <div><i class="material-icons">label</i>서울시 강남구 두성로33번길 20</div>
+            </ul>
+        </section>
+        <section id='s2'>
+            <h1 class='c1'>학력사항</h1>
+            <ul>
+                <li><a href='http://www.pusan.ac.kr/'>아형대학교 재학</a></li>
+                <li><a href='http://www.sajik.hs.kr/'>아언고등학교 졸업</a></li>
+                <li><a href='http://onchun.ms.kr/'>우주중학교 졸업</a></li>
+                <li><a href='http://www.geumgang.es.kr/'>두두초등학교 졸업</a></li>
+            </ul>
+        </section>
+        <section id='s3'>
+            <h1 class='c1'>자격사항</h1>
+            <ul>
+                <li>운전면허 2종보통</li>
+                <li>한국사능력검정시험 1급</li>
+            </ul>
+        </section>
+        <section id='s4'>
+            <h1 class='c1'>자기소개</h1>
+            <div><a href="../01/01_1.html">SWOT 분석</a></div>
+            <div>본인 소개를 작성하세요.</div>
+        </section>
+        <footer>
+            &copy;MGH 서울시 강남구 두성로33번길 20
+        </footer>
+    </body>
+</html>
+첨부파일
