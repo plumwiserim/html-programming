@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>자바스크립트연습</title>
+        <style>
+            h1 {
+                background-color: beige;
+            }
+            #p3 {
+                color: blueviolet;
+            }
+        </style>
+        <script>
+            /*예약어 이름*/
+            function show1() {
+                document.getElementById('p2').innerHTML='<h2>아이디:안녕하세요</h2>';
+                //console.log('아이디 찾기');
+                //document.write('아이디:안녕하세요.');
+                /*#p3 의 #은 getElementById에 이미 포함됨*/
+            }
+            function show2() {
+                document.getElementsByClassName('c2')[0].innerHTML='클래스:안녕하세요.';
+                document.getElementsByClassName('c2')[1].innerHTML='클래스:안녕하세요.';
+                /*두개의 클래스가 배열로 들어오게 됨*/
+            }
+            function show3() {
+                document.getElementsByTagName('p')[0].innerHTML='태그:안녕하세요';
+                document.getElementsByTagName('p')[1].innerHTML='태그:안녕하세요';
+                document.getElementsByTagName('p')[2].innerHTML='태그:안녕하세요';
+            }
+            
+        </script>
+        <!--style이나 script 태그는 head에 적으나 body에 적으나 상관없음-->
+    </head>
+    <body>
+        <h1>자바스크립트연습</h1>
+        <p class='c1' id='p1'>첫번째 영역</p>
+        <p class='c2' id='p2'>두번째 영역</p>
+        <p class='c2' id='p3'>세번째 영역</p>
+        <!--form태그는 -->
+        <input type='button' value='ID찾기' onclick='show1();'>
+        <!--버튼을 눌렀을 때 show함수 실행 show();세미콜론 유무 상관없음-->
+        <input type='button' value='CLASS찾기' onclick='show2();'>
+        <input type='button' value='Tag찾기' onclick='show3();'>
+    </body>
+</html>
