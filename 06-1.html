@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>자바스크립트연습</title>
+        <style>
+            h1 {
+                background-color: beige;
+            }
+            #msg {
+                width : 300px;
+                height: 200px;
+                border : 2px solid green;
+                margin : 20px;
+                padding : 20px;
+                text-align: center;
+            }
+        </style>
+        <script>
+            function show() {
+                //input 요소의 값을 가져오기=>변수기억
+                var kname=form1.txt_1.value
+                //form 이름 id
+                document.getElementById('msg').innerHTML=kname+'님 반갑습니다.';
+            }
+        </script>
+        
+    </head>
+    <body>
+        <h1>자바스크립트연습</h1>
+        <form name='form1'>
+        <label for='txt1'>성명</label>
+        <input type='text' name='txt1' id='txt_1' placeholder="성명입력">
+        <input type='button' value='확인' onclick='show();'>
+        </form>
+        <div id='msg'></div>
+    </body>
+</html>
+[출처] [HTML] 06_1|작성자 예림
