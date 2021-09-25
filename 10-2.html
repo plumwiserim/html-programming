@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>jquery연습</title>
+		<style>
+			.box1{
+				border-radius: 10px;
+				border: 2px solid #73AD21;
+				background-color : #73AD21;
+				padding: 10px; 
+				margin : 10px;
+				width: 400px;
+				height: 20px; 
+				color : white;
+				text-align : center;
+			}
+			.box2 {
+				width : 400px ;
+				height : 120px;
+				margin : 10px;
+				padding-top : 20px;
+				text-align : center;
+				border : 2px solid grey;
+				box-sizing : border-box;
+				float : left ;
+			}
+			img {
+				width : 200px ;
+				height : 50px;
+			}
+			form {
+				padding: 10px; 
+				margin : 10px;
+				width: 400px;
+				height: 20px; 
+				text-align : center;
+				clear : both ;				
+			}
+		</style>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script>
+			$(document).ready(function(){
+				$("#sel1").click(function(){
+					//클릭이 되면 값을 받고싶음
+					//form태그는 절대 text로 받을 수 없음 -> val method로 받아야함
+					//console.log($("#sel1").val());
+					var val = $("#sel1").val();
+					if (val=='') {
+						return;
+					}
+					else {
+						$("#img1").attr("src", "./img/" + val + ".png");
+						//태그 안의 속성을 바꿔주는 것 -> 이미지 속성을 다른걸로
+						var url = "";
+						switch (val){
+							case "google":
+								url = "http://google.com"
+								//$("#p1").text("http://google.com")
+								break;
+							case "naver":
+								url = "http://naver.com"
+								break;
+							case "daum":
+								url = "http://daum.net"
+								break;
+						}
+
+						$("#a1").attr("href", url);
+						$("#p1").html("<a href='"+url+"'>"+url+"</a>")
+					}
+					
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div class="box1">jQuery</div>
+		<div class="box2" id="d1">
+			<a href="#" id="a1"><img id="img1"></a>
+			<p id="p1">
+
+			</p>
+		</div> 
+		<form name="form1">
+			<select name="sel1" id="sel1">
+				<option value="">검색엔진</option>
+				<option value="google">구글</option>
+				<option value="naver">네이버</option>
+				<option value="daum">다음</option>
+			</section>
+		</form>
+	</body>
+</html>
