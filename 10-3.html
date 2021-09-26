@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>jquery</title>
+ 
+<style>
+	.box1 {
+		border-radius: 10px;
+		border: 2px solid #73AD21;
+		background-color : #73AD21;
+		padding: 10px; 
+		margin : 10px;
+		width: 400px;
+		height: 20px; 
+		color : white;
+		text-align : center;
+	}
+	.rdan {
+		margin-top: 80px; 
+		font-size : 40px;
+		text-align : center;
+	}
+	.box2 {		 
+		padding: 10px; 
+		margin : 10px;
+		width: 400px; 
+		text-align : center;
+	} 
+	#msg {
+		width : 400px;
+		height :100px;
+		margin : 10px;		
+		padding: 10px;  
+		 
+		text-align : center;		
+	}
+	 
+	.card {
+		width : 45px;
+		height :50px;
+		font-size : 30px;
+		text-align : center;
+		border: 1px solid #73AD21;
+		border-radius: 5px;
+		float : left ;
+		margin : 5px;
+	}
+	img {
+		width : 200px;
+		height :80px;
+	}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+	var numg=0;
+	var flag = false;  //번호가 생성됐을때만 mouseenter와 mouseleae를 작동하게
+	$(document).ready(function(){  //function명을 적을 필요 X
+		$('#bt1').click(function(){
+			//S("#c1").text(1); : text는 1이라는 값을 쓰게 해줌
+			for (i=1;i<=14;i++){
+				var j = Math.floor(Math.random()*99) + 1;  //자바에서 랜덤수 생성
+				$("#c"+i).text(j);
+				flag = true;
+			}
+		});
+
+		$('#bt2').click(function(){
+			for (i=1;i<=14;i++){
+				$("#c"+i).text('');
+			}
+			//$(".card").text('');  //반복문 없이
+			$(".card").css({"background-color":"white", "color":"black"})
+			flag = false;
+		});	
+
+		/*
+		$(".card").click(function(){
+			var num = parseInt($(this).text());  //내가 틀릭한 숫자, parseInt로 문자를 숫자로
+			if (num%2==0){
+				$(this).css({"background-color":"red", "color":"white"});
+			}
+			else{
+				$(this).css("background-color", "blue");
+				$(this).css("color", "white");
+			}
+		})
+		*/
+		$(".card").mouseenter(function(){
+			numg = parseInt($(this).text());  //내가 틀릭한 숫자, parseInt로 문자를 숫자로
+			if (flag == false) return;
+			if (numg%2==0){
+				$(this).css({"background-color":"red", "color":"white"});
+				$(this).text("짝");
+			}
+			else{
+				$(this).css("background-color", "blue");
+				$(this).css("color", "white");
+				$(this).text("홀");
+			}
+		})
+		$(".card").mouseleave(function(){
+			if (flag == false) return;
+			$(this).css({"background-color":"white", "color":"black"});
+			$(this).text(numg);
+			
+		});
+	});
+</script>
+</head>
+<body>
+<form name="myform">
+	<div class="box1">
+		jQuery DOM 제어
+	</div>
+	
+	<div id="msg">		
+		<div class = "card" id="c1"></div> 
+		<div class = "card" id="c2"></div> 
+		<div class = "card" id="c3"></div> 
+		<div class = "card" id="c4"></div> 
+		<div class = "card" id="c5"></div> 
+		<div class = "card" id="c6"></div> 
+		<div class = "card" id="c7"></div>  
+		<div style="clear:both"></div>
+		<div class = "card" id="c8"></div> 
+		<div class = "card" id="c9"></div> 
+		<div class = "card" id="c10"></div> 
+		<div class = "card" id="c11"></div> 
+		<div class = "card" id="c12"></div> 
+		<div class = "card" id="c13"></div> 
+		<div class = "card" id="c14"></div> 
+		<div style="clear:both"> </div>
+		<p>
+		<input type="button" value="번호생성" id="bt1">
+		<input type="button" value="번호지우기" id="bt2">
+		</p>
+	</div>
+</form>
+</body>
+</html>
