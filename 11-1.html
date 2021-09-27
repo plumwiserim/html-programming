@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>주사위게임</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<style>
+	.box1 {
+		border-radius: 10px;
+		border: 2px solid #73AD21;
+		background-color : #73AD21;
+		padding: 10px; 
+		margin : 10px;
+		width: 400px;
+		height: 20px; 
+		color : white;
+		text-align : center;
+	}
+	.box2 {		 
+		padding: 10px; 
+		margin : 10px;
+		width: 400px; 
+		text-align : center;
+	} 
+	#msg {
+		width : 400px;
+		height : 40px;
+		margin : 10px;
+		padding: 10px;  
+		border: 1px solid #73AD21;
+		font-size : 14px;
+		color : red;
+		text-align : center;
+	}
+	#msgimg {
+		width : 400px; 
+		margin : 10px;
+		padding: 10px;  
+		border: 1px solid #73AD21;
+		text-align : center;
+	}
+	.b1 {
+		width : 100px;
+		height :100px;
+		font-size : 30px;
+		text-align : center;
+	}
+</style>
+<script>
+	//전역변수
+	var total = 0;
+	var win = 0;
+	function show(num){
+		var com = Math.floor(Math.random()*6)+1;
+		total++;  //전체 횟수 증가
+		$("#img1").attr("src", "./img/"+num+".png");
+		$("#img2").attr("src", "./img/c"+com+".png");
+
+		var str=""
+		if(num==com){
+			win++;
+			str = str + "맞았습니다.<br>";
+		}
+		else{
+			str = str + "틀렸습니다.<br>";
+		}
+
+		str = str + "전체횟수 : " + total + ", 맞은횟수 : " + win;
+		$("#msg").html(str);
+	}
+	function clearShow(){
+		$("#img1").attr("src", "./img/q.png");
+		$("#img2").attr("src", "./img/q.png");
+		$("#msg").html("");
+		total=0;
+		win=0;
+		//clear시켜줄때는 전역변수 초기화를 해줘야함
+	}
+</script>
+</head>
+<body>
+<form name="myform">
+	<div class="box1">
+		주사위게임
+	</div>
+	<div class="box2">
+		<p>
+		<img src="./img/1.png" onclick="show(1)">
+		<img src="./img/2.png" onclick="show(2)">
+		<img src="./img/3.png" onclick="show(3)">
+		</p>
+		<p>
+		<img src="./img/4.png" onclick="show(4)">
+		<img src="./img/5.png" onclick="show(5)">
+		<img src="./img/6.png" onclick="show(6)">
+		</p>
+		<p>
+		<input type="button" value="다시하기" onclick="clearShow()">
+		</p>
+	</div>
+	<div id="msgimg">
+		 <img src="./img/q.png" id="img1"> 
+		 <img src="./img/vs.png">
+		 <img src="./img/q.png" id="img2">
+	</div>
+	<div id="msg">
+		
+	</div>
+</form>
+</body>
+</html>
