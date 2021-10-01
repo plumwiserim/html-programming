@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>jquey</title>
+		
+		<style>
+		.box1 {
+			border-radius: 5px;
+			border: 2px solid #73AD21;
+			padding: 5px; 
+			margin:5px;
+			width: 50px;
+			height: 50px; 
+			font-size:30px;
+			text-align:center;
+			float : left;
+		}
+		.imgBox {
+			width: 40px;
+		}
+		.box2 {
+			clear : both;
+		} 
+		.box3 {
+			width: 200px;
+			height: 50px; 
+			margin:5px;
+			text-align:center;
+		} 
+		#msg {
+			border-radius: 5px;
+			border: 2px solid #73AD21;
+			padding: 5px; 
+			margin:5px;
+			width: 200px;
+			height: 50px; 
+			font-size:30px;
+			text-align:center;
+			float : left;
+		}
+		</style>
+	
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script>
+			var num = [1,0,0,0,0,0,0,0,0];
+			var flag = false;
+			var cnt = 0;
+
+			function shuffle() {
+				
+				for (var i=0;i<num.length;i++) {
+					var idx1 = Math.floor(Math.random()*9);
+					var idx2 = Math.floor(Math.random()*9);
+
+					if (idx1!=idx2) {
+						var temp=num[idx1];
+						num[idx1]=num[idx2];
+						num[idx2]=temp;
+					}
+				}
+				console.log(num);
+			}
+			$(document).ready(function(){
+				$('#btn1').click(function(){
+					shuffle();
+					flag = false;
+					cnt=0;
+					$('#msg').text('');
+					
+					for(var i=1;i<=num.length;i++) {
+						var str='<img src="./img/q.png" class="imgBox" id="img'+i+'">';
+
+						$('#div'+i).html(str);
+					}
+				});
+				/*�����朱� ���焔�� ������ �企欧�瑚� 豌�襴� ����
+				$('.imgBox').click(function(){
+					console.log($(this).attr('id'));
+				});*/
+
+				//�����朱� ���焔�� ������ �企欧�碁ゼ ��鍵
+				$('.box1').on('click','.imgBox',function(){
+					if (flag) return;
+
+					var idx=parseInt($(this).attr('id').replace('img',''))-1;
+
+					
+					if ($(this).attr('src')=='./img/q.png') {
+						if (num[idx]==0) {
+							$(this).attr('src','./img/heart.png');
+							flag = false;
+							cnt++;
+							if(cnt==8){
+								$('.imgBox').attr('src','./img/heart.png');
+								$('#msg').text('success');
+							}
+						}
+						else {
+							$('.imgBox').attr('src','./img/boom.png');
+							$('#msg').text('false');
+							flag = true;
+						}
+					}
+					
+
+					console.log(idx);
+
+				});
+			});
+		</script>
+	</head>
+	
+	<body>	
+		<div id="box">
+		<div class="box1" id="div1"></div>
+		<div class="box1" id="div2"></div>
+		<div class="box1" id="div3"></div>
+		<div class="box2"></div>
+		<div class="box1" id="div4"></div>
+		<div class="box1" id="div5"></div>
+		<div class="box1" id="div6"></div>
+		<div class="box2"></div>
+		<div class="box1" id="div7"></div>
+		<div class="box1" id="div8"></div>
+		<div class="box1" id="div9"></div>
+		<div class="box2"></div>
+		</div> 
+		<div id="msg"></div>
+		<div class="box2"></div>
+		<div class="box3">
+		<input type="button" value="mix" id="btn1">
+		</div>
+	</body>
+</html>
