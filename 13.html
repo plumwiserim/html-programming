@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>xml파싱</title>
+
+<style>
+	.box1 {
+		border-radius: 10px;
+		border: 2px solid #73AD21;
+		background-color : #73AD21;
+		padding: 10px; 
+		margin : 10px;
+		width: 400px;
+		height: 20px; 
+		color : white;
+		text-align : center;
+	}
+	.box2 {		 
+		padding: 10px; 
+		margin : 10px;
+		width: 400px; 
+		text-align : center;
+	} 
+	.box3 {
+		margin : 10px;
+		padding: 10px;
+		padding-left : 20px;
+		font-size : 14px;
+		color : blue; 
+	}
+	#msgimg {
+		width : 400px; 
+		margin : 10px;
+		padding: 10px;  
+		border: 1px solid #73AD21;
+		text-align : center;
+	}
+	 
+	.card {
+		width : 60px;
+		height :60px;
+		border: 2px solid #73AD21;
+		border-radius: 5px;
+		margin: 5px;
+		padding-top:6px;
+		font-size: 25px;
+		float: left;
+	}
+	.cardClear {
+		clear : both;
+	}
+	#msg {
+		border-radius: 5px;
+		border: 2px solid #73AD21;
+		padding: 10px;
+		padding-left: 20px;
+		margin:10px;
+		width: 400px;
+		height: 200px; 
+		font-size:14px;
+		text-align:left;
+		float : left;
+	}
+	p {
+		color : red ;
+	}
+	#up {
+		color : red;
+	}
+	#down {
+		color : blue;
+	}
+	a {
+		text-decoration: none;
+	}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>  
+<script>
+	function init(){
+		var newDate = new Date();
+		//            Date 객체 생성자
+		newDate.setDate(newDate.getDate()-1);
+
+		var y=newDate.getFullYear();
+		$('#txtYear').val(y);
+		
+		var m=newDate.getMonth()+1;
+		if(m<=9) m='0'+m;
+		$('#selMon').val(m);
+		
+		var d=newDate.getDate();
+		
+		if(d<=9) d='0'+d;
+		$('#selDay').val(d);
+
+		console.log(y+', '+m+', '+d);
+
+		
+	}
+	function show(movieCd) {
+		//alert(movieCd);
+		var mykey='430156241533f1d058c603178cc3ca0e';
+		var myurl='http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.xml?key='+mykey+'&movieCd='+movieCd;
+
+		var str='';
+		$.ajax({
+			url:myurl,
+			dataType:'xml',
+			success:function(data){
+				//console.log(data);
+				str=str+'<h1>'+$(data).find('movieNm').text()+'</h1>';
+				str=str+'<ul>';
+				$(data).find('genre').each(function(){
+					
+					str=str+'<li>'+$(this).find('genreNm').text()+'</li>';
+				});
+				str=str+'</ul>';
+				$('.box3').html(str);
+			},
+			error:function(){
+				alert('에러');
+			}
+		});
+	}
+	$(document).ready(function(){
+		init();
+
+		$('#bt1').click(function(){
+			var mykey='430156241533f1d058c603178cc3ca0e';
+			var mydate=$('#txtYear').val()+$('#selMon').val()+$('#selDay').val();
+			var myurl='http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.xml?key='+mykey+'&targetDt='+mydate;
+
+			console.log(myurl);
+
+			var str='';
+			$.ajax({
+				url:myurl,
+				//type생략가능
+				dataType:'xml',
+				success:function(data){
+					//console.log(data);
+					$(data).find('dailyBoxOffice').each(function(){
+						str=str+'<a href="#" onclick="javascript:show('+$(this).find('movieCd').text()+');">';
+						str=str+$(this).find('rank').text()+'위 (';
+						var rankInten=parseInt($(this).find('rankInten').text());
+						if(rankInten>0)
+							str=str+'<span id="up">▲</span>';
+						else if(rankInten<0)
+							str=str+'<span id="down">▼</span>';
+						str=str+Math.abs(rankInten)+') ';
+						str=str+$(this).find('movieNm').text();
+						//str=str+$(this).find('movieCd').text();
+						str=str+'</a><br>';
+					});
+					//var boxofficeType = $(data).find('boxofficeType').text();
+					//console.log(dailyBoxOffice);
+					console.log(str);
+					$('#msg').html(str);
+				},
+				error:function(){
+					alert('에러');
+				}
+			});
+		});
+	});
+</script>
+</head>
+<body>
+<form name="myform">
+	<div class="box1">
+		일별 박스오피스
+	</div>
+	<div class="box2">
+		<input type="text" name="txtYear" id="txtYear" size="6">년
+		<select id="selMon">
+			<option value="01">1월</option> 
+			<option value="02">2월</option> 
+			<option value="03">3월</option> 
+			<option value="04">4월</option> 
+			<option value="05">5월</option> 
+			<option value="06">6월</option> 
+			<option value="07">7월</option> 
+			<option value="08">8월</option> 
+			<option value="09">9월</option> 
+			<option value="10">10월</option> 
+			<option value="11">11월</option> 
+			<option value="12">12월</option> 
+		</select>
+		<select id="selDay">
+			<option value="01">1일</option> 
+			<option value="02">2일</option> 
+			<option value="03">3일</option> 
+			<option value="04">4일</option> 
+			<option value="05">5일</option> 
+			<option value="06">6일</option> 
+			<option value="07">7일</option> 
+			<option value="08">8일</option> 
+			<option value="09">9일</option> 
+			<option value="10">10일</option> 
+			<option value="11">11일</option> 
+			<option value="12">12일</option>
+			<option value="13">13일</option>
+			<option value="14">14일</option> 
+			<option value="15">15일</option> 
+			<option value="16">16일</option>
+			<option value="17">17일</option>
+			<option value="18">18일</option> 
+			<option value="19">19일</option> 
+			<option value="20">20일</option>
+			<option value="21">21일</option>
+			<option value="22">22일</option>
+			<option value="23">23일</option>
+			<option value="24">24일</option>
+			<option value="25">25일</option>
+			<option value="26">26일</option>
+			<option value="27">27일</option>
+			<option value="28">28일</option>
+			<option value="29">29일</option>
+			<option value="30">30일</option>
+			<option value="31">31일</option>
+		</select>
+		<input type="button" value="확인" id="bt1">
+	</div> 	
+	<div id="msg">
+	</div>
+	<div class='cardClear'></div>
+	<div class="box3"></div>	
+	
+</form>
+</body>
+</html>
