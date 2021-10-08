@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>숫자야구</title>
+        <style>
+            .box {
+                float: left;
+                margin : 10px;
+            }
+            #box2 {
+                border-style: solid;
+                border-width: 1px;
+                border-color:#F8E0E0;
+                border-radius : 7px;              
+            }
+            #inbox1, #inbox2, #inbox3, h3 {
+                padding : 10px;
+            }
+            #inbox1 {
+                text-align: center;
+                width : 188px;
+                background-color: #FBEFEF;
+                border-radius: 10px;
+            }
+            #inbox2 {
+                text-align: center;
+            }
+            #inbox3 {
+                text-align: center;
+                color : gray;
+
+                background-color: #F8E0E0;
+
+                height : 90px;
+                border-radius: 10px;
+            }
+            #inbox4 {
+                text-align: center;
+                color : gray;
+
+                margin : 10px;
+                
+                border-radius: 10px;
+            }
+            #insert, #reset {
+                border : none;
+                border-radius : 5px;
+            }
+            select, #insert {
+                width : 40px;
+            }
+            #insert {
+                background-color: white;
+            }
+            #reset {
+                width : 100%;
+                background-color: #FBEFEF;
+            }
+            .m {
+                display : inline-block;
+                
+                height : 20px;
+                text-align: center;
+
+                background-color: #FBEFEF;
+
+                border-style: solid;
+                border-width: 1px;
+                border-color: white;     
+                border-radius : 7px;
+            }
+            #m1, #m3 {
+                width : 60px;
+            }
+            #m2 {
+                width : 90px;
+            }
+            .a {
+                display: inline-block;
+                width: 28px;
+                
+                border-style: solid;
+                border-width: 1px;
+                border-color: white;
+
+                box-sizing: border-box;
+            }
+            .b {
+                display : inline-block;
+                
+                text-align: center;
+                
+                border-style: solid;
+                border-width: 1px;
+                border-color: white;
+
+                box-sizing: border-box;
+            }
+            #b1, #b3 {
+                width : 62px;
+            }
+            #b2 {
+                width : 92px;
+            }
+        </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script>
+            var arr1=[];
+            var arr2=[];            
+
+            function start() {
+                var a;
+                while(arr1.length<3) {
+                    a=Math.floor(Math.random()*9);
+                    if (arr1.indexOf(a)==-1)
+                        arr1.push(a);
+                }
+                console.log(arr1);
+            }
+            $(document).ready(function(){
+                var btn = document.getElementById('insert');
+                btn.disabled = false;
+                start();
+
+                var str='';
+                var cnt=0;
+
+                $('#insert').click(function(){
+                    arr2[0]=parseInt($('#first').val());
+                    arr2[1]=parseInt($('#second').val());
+                    arr2[2]=parseInt($('#third').val());
+                    console.log(arr2);
+
+                    var result='';
+                    var r1=0;
+                    var r2=0;
+                    
+                    cnt++;
+                   
+                    for (var i=0;i<3;i++) {
+                        for (var j=0;j<3;j++) {
+                            if (arr2[j]==arr1[i]) {
+                                if(i==j) {
+                                    r1++;
+                                }
+                                else {
+                                    r2++;
+                                }
+                            }
+                        }
+                    }
+
+                    result='S'+r1+' B'+r2;
+                    if (r1==0 && r2==0) {
+                        result='out';
+                    }
+                    str=str+'<span class="b" id="b1">'+cnt+'</span>'
+                           +'<span class="b" id="b2">'
+                           +'<span class="a" id="'+cnt+'0">'+arr2[0]+'</span>'
+                           +'<span class="a" id="'+cnt+'1">'+arr2[1]+'</span>'
+                           +'<span class="a" id="'+cnt+'2">'+arr2[2]+'</span>'
+                           +'</span>'
+                           +'<span class="b" id="b3">'+result+'</span><br>';
+                    $('#msg').html(str);
+                    
+                    if(r1==3) {
+                        $('#inbox3').html('<h1>성공</h1>');
+                    }
+                    if (cnt==9 && r1!=3) {
+                        $('#inbox3').html('<h1>실패</h1>');
+                        $('#inbox4').html('<h3>정답 : '+arr1+'</h3>');
+                        $('#inbox4').css('background-color','#F8E0E0');
+                        btn.disabled = 'disabled';
+                    }
+                });
+                
+                $('#reset').click(function(){
+                    btn.disabled = false;
+
+                    arr1=[];
+                    start();
+
+                    str='';
+                    cnt=0;
+                    
+                    $('#msg').html(str);
+                    $('#inbox3').html('');
+                    $('#inbox4').html('');
+                    $('#inbox4').css('background-color','#FFFFFF');
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <form>
+            <div class='box' id='box1'>
+                <h1>숫자 야구 게임</h1>
+                <h2>게임 규칙</h2>
+                <p>
+                    컴퓨터가 3자리의 숫자를 임의로 정한 뒤, 사용자가 3자리의 숫자를 입력해서 결과를 확인한다.<br>
+                    그리고 그 결과를 토대로 컴퓨터가 정한 숫자를 예상한 뒤 맞힌다.
+                    <ul>
+                        <li>사용되는 숫자는 0에서 9까지 서로 다른 숫자이다.</li>
+                        <li>숫자는 맞지만 위치가 틀렸을 때는 볼.</li>
+                        <li>숫자와 위치가 전부 맞으면 스트라이크.</li>
+                        <li>숫자와 위치가 전부 틀리면 아웃.</li>
+                        <li>물론 무엇이 볼이고 스트라이크인지는 알려주지 않는다.</li>
+                    </ul>
+                </p>
+                <p>
+                    예시를 보자면 다음과 같다.<br><br>
+                    컴퓨터가 정한 숫자가 "216"이라 치자.<br>
+                    각 회차별로 설명하자면,<br>
+                    <ol>
+                        <li>830 - 들어맞는 숫자가 아예 없으므로 아웃.</li>
+                        <li>659 - 6이 있지만 위치가 다르므로 1볼.</li>
+                        <li>264 - 2가 있고 위치가 맞으며, 6이 있지만 위치가 다르므로 1스트라이크 1볼.</li>
+                        <li>126 - 숫자는 전부 맞지만 위치는 6만 맞고 나머지 둘은 다르므로 1스트라이크 2볼.</li>
+                        <li>216 - 전부 맞으므로 승리.</li>
+                    </ol>
+                </p>
+            </div>
+            <div class='box' id='box2'>
+                <div><span class='m' id='m1'>횟수</span><span class='m' id='m2'>숫자</span><span class='m' id='m3'>판정</span></div>
+                <div id='msg'></div>
+            </div>
+            <div class='box' id='box3'> 
+                <div id='inbox1'>
+                    <select id='first'>
+                        <option value='0'>0</option>
+                        <option value='1'>1</option>
+                        <option value='2'>2</option>
+                        <option value='3'>3</option>
+                        <option value='4'>4</option>
+                        <option value='5'>5</option>
+                        <option value='6'>6</option>
+                        <option value='7'>7</option>
+                        <option value='8'>8</option>
+                        <option value='9'>9</option>
+                    </select>
+                    <select id='second'>
+                        <option value='0'>0</option>
+                        <option value='1'>1</option>
+                        <option value='2'>2</option>
+                        <option value='3'>3</option>
+                        <option value='4'>4</option>
+                        <option value='5'>5</option>
+                        <option value='6'>6</option>
+                        <option value='7'>7</option>
+                        <option value='8'>8</option>
+                        <option value='9'>9</option>
+                    </select>
+                    <select id='third'>
+                        <option value='0'>0</option>
+                        <option value='1'>1</option>
+                        <option value='2'>2</option>
+                        <option value='3'>3</option>
+                        <option value='4'>4</option>
+                        <option value='5'>5</option>
+                        <option value='6'>6</option>
+                        <option value='7'>7</option>
+                        <option value='8'>8</option>
+                        <option value='9'>9</option>
+                    </select>
+                    <input type="button" id='insert' value='입력'> 
+                </div>
+                <div id='inbox2'>
+                    <input type="reset" id='reset' value='다시하기'>  
+                </div>
+                <div id='inbox3'></div>
+                <div id='inbox4'></div>
+            </div>
+        </form>
+    </body>
+</html>
