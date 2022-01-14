@@ -41,6 +41,21 @@
       }
     </style>
     <script>
+      function show() {
+        if (form1.sel.value == "") {
+          alert("단을 선택하세요.");
+        } else {
+          var str = "";
+          var dan = form1.sel.value;
+          var ans = 0;
+          for (i = 2; i < 10; i++) {
+            ans = dan * i;
+            str = str + dan + " x " + i + " = " + ans + "<br>";
+          }
+          console.log(str);
+          document.getElementById("msg").innerHTML = str;
+        }
+      }
       function showRandom() {
         var str = "";
         var dan = Math.floor(Math.random() * 8) + 2;
@@ -83,7 +98,7 @@
           <option value="8">8단</option>
           <option value="9">9단</option>
         </select>
-        <input type="button" value="단보기" />
+        <input type="button" value="단보기" onclick="show();" />
         <input type="button" value="랜덤보기" onclick="showRandom();" />
         <input type="button" value="지우기" />
       </div>
