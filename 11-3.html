@@ -1,120 +1,137 @@
 <!DOCTYPE html>
 <html>
-<head>
-<title>가위바위보</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<style>
-	img {
-		width : 80px;
-		height :80px;
-	}
-	.box1 {
-		border-radius: 10px;
-		border: 2px solid #73AD21;
-		background-color : #73AD21;
-		padding: 10px; 
-		margin : 10px;
-		width: 400px;
-		height: 20px; 
-		color : white;
-		text-align : center;
-	}
-	.box2 {		 
-		padding: 10px; 
-		margin : 10px;
-		width: 400px; 
-		text-align : center;
-	} 
-	#msgimg {
-		width : 400px; 
-		margin : 10px;
-		padding: 10px;  
-		border: 1px solid #73AD21;
-		text-align : center;
-	}
-	#msg {
-		width : 400px;
-		height : 40px;
-		margin : 10px;
-		padding: 10px;  
-		border: 1px solid #73AD21;
-		font-size : 14px;
-		color : red;
-		text-align : center;
-	}
-</style>
- <script>
-	 $(document).ready(function(){
-		var total = 0;
-		var win = 0;
-		$("p>img").click(function(){
-			total++;
-			var userimg = $(this).attr("src");
-			$("#img1").attr("src", userimg);
+  <head>
+    <title>가위바위보</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style>
+      img {
+        width: 80px;
+        height: 80px;
+      }
+      .box1 {
+        border-radius: 10px;
+        border: 2px solid #73ad21;
+        background-color: #73ad21;
+        padding: 10px;
+        margin: 10px;
+        width: 400px;
+        height: 20px;
+        color: white;
+        text-align: center;
+      }
+      .box2 {
+        padding: 10px;
+        margin: 10px;
+        width: 400px;
+        text-align: center;
+      }
+      #msgimg {
+        width: 400px;
+        margin: 10px;
+        padding: 10px;
+        border: 1px solid #73ad21;
+        text-align: center;
+      }
+      #msg {
+        width: 400px;
+        height: 40px;
+        margin: 10px;
+        padding: 10px;
+        border: 1px solid #73ad21;
+        font-size: 14px;
+        color: red;
+        text-align: center;
+      }
+    </style>
+    <script>
+      $(document).ready(function () {
+        var total = 0;
+        var win = 0;
+        $("p>img").click(function () {
+          total++;
+          var userimg = $(this).attr("src");
+          $("#img1").attr("src", userimg);
 
-			userimg = userimg.replace("./img/", "");
-			userimg = userimg.replace(".png", "");
+          userimg = userimg.replace("./img/", "");
+          userimg = userimg.replace(".png", "");
 
-			var user = 0;
-			switch(userimg){
-				case "scissors" : user = 1; break;
-				case "rock" : user = 2; break;
-				case "paper" : user = 3; break;
-			}
+          var user = 0;
+          switch (userimg) {
+            case "scissors":
+              user = 1;
+              break;
+            case "rock":
+              user = 2;
+              break;
+            case "paper":
+              user = 3;
+              break;
+          }
 
-			var com = Math.floor(Math.random()*3)+1;
-			var comimg = "./img/";
-			switch(com){
-				case 1 : comimg = comimg + "scissorscom.png"; break;
-				case 2 : comimg = comimg + "rockcom.png"; break;
-				case 3 : comimg = comimg + "papercom.png"; break;
-			}
+          var com = Math.floor(Math.random() * 3) + 1;
+          var comimg = "./img/";
+          switch (com) {
+            case 1:
+              comimg = comimg + "scissorscom.png";
+              break;
+            case 2:
+              comimg = comimg + "rockcom.png";
+              break;
+            case 3:
+              comimg = comimg + "papercom.png";
+              break;
+          }
 
-			$("#img2").attr("src", comimg);
+          $("#img2").attr("src", comimg);
 
-			var str = '';
-			if(user==com){
-				str = str + "비김<br>";
-			}
-			else if((user==1 && com==3)||(user==2 && com==1)||(user==3 && com==2)){
-				str = str + "승<br>";
-				win++;
-			}
-			else{
-				str = str + "패<br>";
-			}
-			_rate=(win/total)*100;
-			rate = _rate.toFixed(2);
-			str = str + "전체횟수 : " + total + ", 이긴횟수 : " + win + ", 승률 : " + rate;
-			$("#msg").html(str);
-		});
-	 });
- </script>
-</head>
-<body>
-<form name="myform">
-	<div class="box1">
-		가위바위보게임
-	</div>
-	<div class="box2">
-		<p>
-		<img src="./img/scissors.png" id="i1">
-		<img src="./img/rock.png" id="i2">
-		<img src="./img/paper.png" id="i3">
-		</p>
-		
-		<p>
-		<input type="button" value="다시하기" id="bt1">
-		</p>
-	</div>
-	<div id="msgimg">
-		 <img src="./img/q.png" id="img1"> 
-		 <img src="./img/vs.png">
-		 <img src="./img/q.png" id="img2">
-	</div>
-	<div id="msg">
-		
-	</div>
-</form>
-</body>
+          var str = "";
+          if (user == com) {
+            str = str + "비김<br>";
+          } else if (
+            (user == 1 && com == 3) ||
+            (user == 2 && com == 1) ||
+            (user == 3 && com == 2)
+          ) {
+            str = str + "승<br>";
+            win++;
+          } else {
+            str = str + "패<br>";
+          }
+          _rate = (win / total) * 100;
+          rate = _rate.toFixed(2);
+          str =
+            str +
+            "전체횟수 : " +
+            total +
+            ", 이긴횟수 : " +
+            win +
+            ", 승률 : " +
+            rate;
+          $("#msg").html(str);
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <form name="myform">
+      <div class="box1">가위바위보게임</div>
+      <div class="box2">
+        <p>
+          <img src="./img/scissors.png" id="i1" />
+          <img src="./img/rock.png" id="i2" />
+          <img src="./img/paper.png" id="i3" />
+        </p>
+
+        <p>
+          <input type="button" value="다시하기" id="bt1" />
+        </p>
+      </div>
+      <div id="msgimg">
+        <img src="./img/q.png" id="img1" />
+        <img src="./img/vs.png" />
+        <img src="./img/q.png" id="img2" />
+      </div>
+      <div id="msg"></div>
+    </form>
+  </body>
 </html>

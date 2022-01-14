@@ -1,85 +1,90 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>jquery연습</title>
-		<style>
-			.box1{
-				border-radius: 10px;
-				border: 2px solid #73AD21;
-				background-color : #73AD21;
-				padding: 10px; 
-				margin : 10px;
-				width: 400px;
-				height: 20px; 
-				color : white;
-				text-align : center;
-			}
-			.box2 {
-				width : 120px ;
-				height : 120px;
-				margin : 10px;
-				padding-top: 50px; 
-				text-align : center;
-				border : 2px solid grey;
-				box-sizing : border-box;
-				float : left ;
-			}
-			form {
-				padding: 10px; 
-				margin : 10px;
-				width: 400px;
-				height: 20px; 
-				text-align : center;
-				clear : both ;			
-			}
-		</style>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-		<script>
-			$(document).ready(function(){
-				$("#bt1").click(function(){ //"안에 id를 써줘야함"
-					//console.log("bt1");
-					$(".box2").show();  //show자체가 액션이고 하나의 행위
-				});
-				$("#bt2").click(function(){ //"안에 id를 써줘야함"
-					//console.log("bt2");
-					$(".box2").hide();
-				});
-				$("#bt3").click(function(){ //"안에 id를 써줘야함"
-					//console.log("bt3");
-					$(".box2").toggle();
-				});
+  <head>
+    <title>jquery연습</title>
+    <style>
+      .box1 {
+        border-radius: 10px;
+        border: 2px solid #73ad21;
+        background-color: #73ad21;
+        padding: 10px;
+        margin: 10px;
+        width: 400px;
+        height: 20px;
+        color: white;
+        text-align: center;
+      }
+      .box2 {
+        width: 120px;
+        height: 120px;
+        margin: 10px;
+        padding-top: 50px;
+        text-align: center;
+        border: 2px solid grey;
+        box-sizing: border-box;
+        float: left;
+      }
+      form {
+        padding: 10px;
+        margin: 10px;
+        width: 400px;
+        height: 20px;
+        text-align: center;
+        clear: both;
+      }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("#bt1").click(function () {
+          //"안에 id를 써줘야함"
+          //console.log("bt1");
+          $(".box2").show(); //show자체가 액션이고 하나의 행위
+        });
+        $("#bt2").click(function () {
+          //"안에 id를 써줘야함"
+          //console.log("bt2");
+          $(".box2").hide();
+        });
+        $("#bt3").click(function () {
+          //"안에 id를 써줘야함"
+          //console.log("bt3");
+          $(".box2").toggle();
+        });
 
-				// $(".box2").lclick(function(){  //셋중에 하나를 click해도 여기에 들어옴
-				// //click에는 function이 들어와야함
-				// 	$(this).hide();	//내가 누르는 것 사라짐
-				// });
-				// $(".box2").dblclick(function(){ 
-				// 	$(this).hide();
-				// });
-				// $(".box2").mouseenter(function(){  //마우스를 올리기만해도 가려짐
-				// 	$(this).hide();
-				// });
-				$(".box2").mouseenter(function(){  //마우스를 올리기만해도 가려짐
-					$(this).css("background-color", $(this).text());
-					$(this).css("color", "white");
-				});
-				$(".box2").mouseleave(function(){  //마우스를 올리기만해도 가려짐
-					// $(this).css("background-color", "white");
-					// $(this).css("color", $(this).text());
-					$(this).css({"background-color" : "white", "color":"black"});
-				});
-			});
-		</script>
-	</head>
-	<body>
-		<div class="box1">jQuery</div>
-		<div class="box2" id="d1">Red</div>
-		<div class="box2" id="d2">Green</div>
-		<div class="box2" id="d3">Blue</div>
-		<form name="form1">
-			<input type="button" value="모두보기" id="bt1">
-			<input type="button" value="모두숨기기" id="bt2">
-			<input type="button" value="전환하기" id="bt3">
-		</form>
-	</body>
+        // $(".box2").lclick(function(){  //셋중에 하나를 click해도 여기에 들어옴
+        // //click에는 function이 들어와야함
+        // 	$(this).hide();	//내가 누르는 것 사라짐
+        // });
+        // $(".box2").dblclick(function(){
+        // 	$(this).hide();
+        // });
+        // $(".box2").mouseenter(function(){  //마우스를 올리기만해도 가려짐
+        // 	$(this).hide();
+        // });
+        $(".box2").mouseenter(function () {
+          //마우스를 올리기만해도 가려짐
+          $(this).css("background-color", $(this).text());
+          $(this).css("color", "white");
+        });
+        $(".box2").mouseleave(function () {
+          //마우스를 올리기만해도 가려짐
+          // $(this).css("background-color", "white");
+          // $(this).css("color", $(this).text());
+          $(this).css({ "background-color": "white", color: "black" });
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div class="box1">jQuery</div>
+    <div class="box2" id="d1">Red</div>
+    <div class="box2" id="d2">Green</div>
+    <div class="box2" id="d3">Blue</div>
+    <form name="form1">
+      <input type="button" value="모두보기" id="bt1" />
+      <input type="button" value="모두숨기기" id="bt2" />
+      <input type="button" value="전환하기" id="bt3" />
+    </form>
+  </body>
 </html>

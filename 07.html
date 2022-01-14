@@ -1,97 +1,97 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>자바스크립트 연습</title>
-        <style>
-            input[type=text] {
-                width : 80px;
-                height : 30px;
-            }
-            #box1 {
-                border-radius: 10px;
-                border: 2px solid #73AD21;
-                background-color : #73AD21;
-                padding: 10px; 
-                margin : 10px;
-                width: 400px;
-                height: 20px; 
-                color : white;
-                text-align : center;
-            }
-            #box2 {
-                border: 2px solid #73AD21;
-                padding: 10px; 
-                margin : 10px;
-                width: 400px; 
-                height : 150px;
-                text-align : center;
-            }
-            form > div {
-                width : 50px;
-                display: inline-block;
-                
-            }
-            /*a태그의 스타일*/
-            a {
-                text-decoration: none;
-                /*줄은 안바뀌지만 박스영역을 가질 수 있다*/
-                display : inline-block;
-                width : 80px;
-                height : 30px;
-                background-color : lightgray;
-                text-align: center;
-            }
-            /*a태그를 누를 때 스타일*/
-            a:hover, a:active {
-                background-color: limegreen;
-                color : white;
-            }
-            #msg {
-                border-radius: 10px;
-                border: 2px solid #73AD21;
-                padding: 10px; 
-                margin : 10px;
-                width: 400px;
-                height:50px; 
-                text-align : center;
-            }
-        </style>
-        <!--a태그 이벤트 쇼함수 정의-->
-        <script>
-            function show() {
-                //alert('test');
-                //1-1. 첫번째 텍스트 상자에 값이 있는지 확인
-                //     값이 없으면 다시 입력
-                if (myform.txt1.value == '') {
-                    alert('첫번째 값을 입력하세요.');
-                    //첫번째 텍스트 상자에 포커스 맞춰주기
-                    myform.txt1.focus();
-                    /*두번째 텍스트 상자로 넘어가지 않도록 함수 끝내기
+  <head>
+    <title>자바스크립트 연습</title>
+    <style>
+      input[type="text"] {
+        width: 80px;
+        height: 30px;
+      }
+      #box1 {
+        border-radius: 10px;
+        border: 2px solid #73ad21;
+        background-color: #73ad21;
+        padding: 10px;
+        margin: 10px;
+        width: 400px;
+        height: 20px;
+        color: white;
+        text-align: center;
+      }
+      #box2 {
+        border: 2px solid #73ad21;
+        padding: 10px;
+        margin: 10px;
+        width: 400px;
+        height: 150px;
+        text-align: center;
+      }
+      form > div {
+        width: 50px;
+        display: inline-block;
+      }
+      /*a태그의 스타일*/
+      a {
+        text-decoration: none;
+        /*줄은 안바뀌지만 박스영역을 가질 수 있다*/
+        display: inline-block;
+        width: 80px;
+        height: 30px;
+        background-color: lightgray;
+        text-align: center;
+      }
+      /*a태그를 누를 때 스타일*/
+      a:hover,
+      a:active {
+        background-color: limegreen;
+        color: white;
+      }
+      #msg {
+        border-radius: 10px;
+        border: 2px solid #73ad21;
+        padding: 10px;
+        margin: 10px;
+        width: 400px;
+        height: 50px;
+        text-align: center;
+      }
+    </style>
+    <!--a태그 이벤트 쇼함수 정의-->
+    <script>
+      function show() {
+        //alert('test');
+        //1-1. 첫번째 텍스트 상자에 값이 있는지 확인
+        //     값이 없으면 다시 입력
+        if (myform.txt1.value == "") {
+          alert("첫번째 값을 입력하세요.");
+          //첫번째 텍스트 상자에 포커스 맞춰주기
+          myform.txt1.focus();
+          /*두번째 텍스트 상자로 넘어가지 않도록 함수 끝내기
                     그러면 NaN 값 안나옴*/
-                    return;
-                }
-                //1-2. 두번째 텍스트 상자에 값이 있는지 확인
-                //     값이 없으면 다시 입력
-                if (myform.txt2.value == '') {
-                    alert('두번째 값을 입력하세요.');
-                    //두번째 텍스트 상자에 포커스 맞춰주기
-                    myform.txt2.focus();
-                    /*세번째 텍스트 상자로 넘어가지 않도록 함수 끝내기
+          return;
+        }
+        //1-2. 두번째 텍스트 상자에 값이 있는지 확인
+        //     값이 없으면 다시 입력
+        if (myform.txt2.value == "") {
+          alert("두번째 값을 입력하세요.");
+          //두번째 텍스트 상자에 포커스 맞춰주기
+          myform.txt2.focus();
+          /*세번째 텍스트 상자로 넘어가지 않도록 함수 끝내기
                     그러면 NaN 값 안나옴*/
-                    return;
-                }
-                //0-1. 첫번째 텍스트 상자에서 값을 가져오기
-                var num1=parseInt(myform.txt1.value);
-                //0-2. 두번째 텍스트 상자에서 값을 가져오기
-                var num2=parseInt(myform.txt2.value);
-                //0-3. 가져온 값을 더하기
-                //var num3=num1+num2;
-                var num3=0;
-                //2. 연산자에 따라서 계사을 다르게 해야함
-                //2-1. 연산자 결정
-                var op=myform.op.value;
-                //2-2. 연산자에 따라 계산
-                /*if (op=='+') num3=num1+num2;
+          return;
+        }
+        //0-1. 첫번째 텍스트 상자에서 값을 가져오기
+        var num1 = parseInt(myform.txt1.value);
+        //0-2. 두번째 텍스트 상자에서 값을 가져오기
+        var num2 = parseInt(myform.txt2.value);
+        //0-3. 가져온 값을 더하기
+        //var num3=num1+num2;
+        var num3 = 0;
+        //2. 연산자에 따라서 계사을 다르게 해야함
+        //2-1. 연산자 결정
+        var op = myform.op.value;
+        //2-2. 연산자에 따라 계산
+        /*if (op=='+') num3=num1+num2;
                 else if (op=='-') num3=num1-num2;
                 else if (op=='x') num3=num1*num2;
                 else if (op=='/') num3=num1/num2;
@@ -99,105 +99,97 @@
                     alert('연산자가 선택이 되지 않았습니다.');
                     return;
                 }*/
-                switch(op) {
-                    case '+' :
-                        num3=num1+num2;
-                        break;
-                        /*case문장이 끝날때마다 반드시 break를 써주어야 한다
+        switch (op) {
+          case "+":
+            num3 = num1 + num2;
+            break;
+          /*case문장이 끝날때마다 반드시 break를 써주어야 한다
                         역으로 이용하자면 더하기 나 빼기 일 때 같은 일을 하고 싶은 경우
                         더하기 케이스에서 break를 뺀다*/
-                    case '-' :
-                        num3=num1-num2;
-                        break;    
-                    case 'x' :
-                        num3=num1*num2;
-                        break;
-                    case '/' :
-                        num3=num1/num2;
-                        break;
-                    default :
-                        alert('연산자가 선택이 되지 않았습니다.');
-                        return;
-                }
-                //0-4. 더한 값을 세번째 텍스트 상자에 넣기
-                myform.txt3.value=num3;
-                //3. 수식 여부
-                //3-1. 체크박스가 체크가 되었는지 확인
-                /*if (myform.ck.checked) {
+          case "-":
+            num3 = num1 - num2;
+            break;
+          case "x":
+            num3 = num1 * num2;
+            break;
+          case "/":
+            num3 = num1 / num2;
+            break;
+          default:
+            alert("연산자가 선택이 되지 않았습니다.");
+            return;
+        }
+        //0-4. 더한 값을 세번째 텍스트 상자에 넣기
+        myform.txt3.value = num3;
+        //3. 수식 여부
+        //3-1. 체크박스가 체크가 되었는지 확인
+        /*if (myform.ck.checked) {
                     //3-2. 수식 만들기
                     var str='';
                     //+는 연결 연산자
                     str=num1+op+num2+'='+num3;
                     document.getElementById('msg').innerHTML=str;
                 }*/
-            }
-            function ev() {
-                
-                //3. 수식 여부
-                //3-1. 체크박스가 체크가 되었는지 확인
-                if (myform.ck.checked) {
-                    if (myform.txt3.value=='') {
-                        document.getElementById('msg').innerHTML='<img src="./img/x.jpg" width="20px" height="20px">';
-                        return;
-                    }
-                    //3-2. 수식 만들기
-                    var str='';
-                    //+는 연결 연산자
-                    str=myform.txt1.value+myform.op.value+myform.txt2.value+'='+myform.txt3.value;
-                    document.getElementById('msg').innerHTML=str;
-                }
-                else {
-                    document.getElementById('msg').innerHTML='';
-                }
-            }
-        </script>
-    </head>
-    <body>
-        <form name='myform'>
-            <div id="box1">
-                간단한 계산기
-            </div>
-            <div id="box2">
-            <p class='p1'>
-            <!--숫자 두개를 입력받자 불러오려면 이름이 필요하다-->
-            <input type='text' name='txt1'>
-            </p>
-            <p class='p2'>
-            <!--+
+      }
+      function ev() {
+        //3. 수식 여부
+        //3-1. 체크박스가 체크가 되었는지 확인
+        if (myform.ck.checked) {
+          if (myform.txt3.value == "") {
+            document.getElementById("msg").innerHTML =
+              '<img src="./img/x.jpg" width="20px" height="20px">';
+            return;
+          }
+          //3-2. 수식 만들기
+          var str = "";
+          //+는 연결 연산자
+          str =
+            myform.txt1.value +
+            myform.op.value +
+            myform.txt2.value +
+            "=" +
+            myform.txt3.value;
+          document.getElementById("msg").innerHTML = str;
+        } else {
+          document.getElementById("msg").innerHTML = "";
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <form name="myform">
+      <div id="box1">간단한 계산기</div>
+      <div id="box2">
+        <p class="p1">
+          <!--숫자 두개를 입력받자 불러오려면 이름이 필요하다-->
+          <input type="text" name="txt1" />
+        </p>
+        <p class="p2">
+          <!--+
             사칙연산만들기
             id 값을 for로 지시해주지 않아도 같이 묶이게끔 만들자-->
-            <label>
-                <input type='radio' name='op' value='+'>+
-            </label>
-            <label>
-                <input type='radio' name='op' value='-'>-
-            </label>
-            <label>
-                <input type='radio' name='op' value='x'>x
-            </label>
-            <label>
-                <input type='radio' name='op' value='/'>/
-            </label>
-            </p>
-            <input type='text' name='txt2'>
-            <!--
+          <label> <input type="radio" name="op" value="+" />+ </label>
+          <label> <input type="radio" name="op" value="-" />- </label>
+          <label> <input type="radio" name="op" value="x" />x </label>
+          <label> <input type="radio" name="op" value="/" />/ </label>
+        </p>
+        <input type="text" name="txt2" />
+        <!--
             =
             버튼을 누르면 값이 나오게끔 하자
             <input type='button' value='='>
             a태그로도 할 수 있다 a태그가 가리키는 것 어떤 위치X 함수를 호출하게끔O
             눌렀을 때 이벤트 쇼함수-->
-            <a href='#' onclick='show();'>=</a>
-            <!--세번째 텍스트 상자는 읽기전용으로 만들기-->
-            <input type='text' name='txt3' readonly>
-            <p>
-                <label>
-                <input type='checkbox' name='ck' onclick='ev()'>수식확인
-                </label>
-            </p>
-        </div>
-        </form>
-        <div id='msg'>
-
-        </div>
-    </body>
+        <a href="#" onclick="show();">=</a>
+        <!--세번째 텍스트 상자는 읽기전용으로 만들기-->
+        <input type="text" name="txt3" readonly />
+        <p>
+          <label>
+            <input type="checkbox" name="ck" onclick="ev()" />수식확인
+          </label>
+        </p>
+      </div>
+    </form>
+    <div id="msg"></div>
+  </body>
 </html>

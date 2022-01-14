@@ -1,62 +1,62 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>반복문</title>
-        <style>
-            #msg {
-                width : 200px;
-                border : 1px solid lightgreen ;
-                margin-top : 20px;
-            }
-            #msg > span {
-                display : inline-block;
-                width : 50px;
-                height : 50px;
-                text-align: center;
-                margin : 10px;
-                border : 1px solid red;
-            }
-            .odd {
-                background-color :lightcoral;
-            }
-            .even {
-                background-color :beige;
-            }
-        </style>
-        <script>
-            function show() {
-                if(form1.sel.value=='') {
-                    document.getElementById('msg').innerHTML='단을 선택하세요';
-                    return;
-                }
-                var num=form1.sel.value;
+  <head>
+    <title>반복문</title>
+    <style>
+      #msg {
+        width: 200px;
+        border: 1px solid lightgreen;
+        margin-top: 20px;
+      }
+      #msg > span {
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+        text-align: center;
+        margin: 10px;
+        border: 1px solid red;
+      }
+      .odd {
+        background-color: lightcoral;
+      }
+      .even {
+        background-color: beige;
+      }
+    </style>
+    <script>
+      function show() {
+        if (form1.sel.value == "") {
+          document.getElementById("msg").innerHTML = "단을 선택하세요";
+          return;
+        }
+        var num = form1.sel.value;
 
-                var str='';
-                /*for(var i=1; i<=num; i++) {
+        var str = "";
+        /*for(var i=1; i<=num; i++) {
                     if (i%2==0)
                         str=str+'<span class="even">'+i+'</span>';
                     else 
                         str=str+'<span class="odd">'+i+'</span>';
                     //console.log(str);
                 }*/
-                var i=1;
-                while(i<=num) {
-                    str=str+i+'<br>';
-                }
-                document.getElementById('msg').innerHTML=str;
-            }
-        </script>
-    </head>
-    <body>
-        <form name='form1'>
-            <select name='sel' onclick='show();'>
-                <option value='1'>1</option>
-                <option value='2'>2</option>
-                <option value='3'>3</option>
-                <option value='4'>4</option>
-                <option value='5'>5</option>
-            </select>
-        </form>
-        <div id='msg'></div>
-    </body>
+        var i = 1;
+        while (i <= num) {
+          str = str + i + "<br>";
+        }
+        document.getElementById("msg").innerHTML = str;
+      }
+    </script>
+  </head>
+  <body>
+    <form name="form1">
+      <select name="sel" onclick="show();">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+    </form>
+    <div id="msg"></div>
+  </body>
 </html>
