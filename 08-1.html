@@ -80,6 +80,9 @@
         console.log(str);
         document.getElementById("msg").innerHTML = str;
       }
+      function deleteText() {
+        document.getElementById("msg").innerHTML = "";
+      }   
     </script>
   </head>
   <body>
@@ -100,7 +103,7 @@
         </select>
         <input type="button" value="단보기" onclick="show();" />
         <input type="button" value="랜덤보기" onclick="showRandom();" />
-        <input type="button" value="지우기" />
+        <input type="button" value="지우기" onclick="deleteText();" />
       </div>
     </form>
     <div id="msg"></div>
