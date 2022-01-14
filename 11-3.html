@@ -44,9 +44,9 @@
       }
     </style>
     <script>
+      var total = 0;
+      var win = 0;
       $(document).ready(function () {
-        var total = 0;
-        var win = 0;
         $("p>img").click(function () {
           total++;
           var userimg = $(this).attr("src");
@@ -110,6 +110,14 @@
           $("#msg").html(str);
         });
       });
+      function clearShow() {
+        $("#img1").attr("src", "./img/q.png");
+        $("#img2").attr("src", "./img/q.png");
+        $("#msg").html("");
+        total = 0;
+        win = 0;
+        //clear시켜줄때는 전역변수 초기화를 해줘야함
+      }
     </script>
   </head>
   <body>
@@ -123,7 +131,7 @@
         </p>
 
         <p>
-          <input type="button" value="다시하기" id="bt1" />
+          <input type="button" value="다시하기" id="bt1" onclick="clearShow()"/>
         </p>
       </div>
       <div id="msgimg">
