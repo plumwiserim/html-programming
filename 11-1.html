@@ -52,7 +52,7 @@
       function show(num) {
         var com = Math.floor(Math.random() * 6) + 1;
         total++; //전체 횟수 증가
-        $("#img1").attr("src", "./img/" + num + ".png");
+        $("#img1").attr("src", "./img/dice" + num + ".png");
         $("#img2").attr("src", "./img/c" + com + ".png");
 
         var str = "";
@@ -81,14 +81,14 @@
       <div class="box1">주사위게임</div>
       <div class="box2">
         <p>
-          <img src="./img/1.png" onclick="show(1)" />
-          <img src="./img/2.png" onclick="show(2)" />
-          <img src="./img/3.png" onclick="show(3)" />
+          <img src="./img/dice1.png" onclick="show(1)" />
+          <img src="./img/dice2.png" onclick="show(2)" />
+          <img src="./img/dice3.png" onclick="show(3)" />
         </p>
         <p>
-          <img src="./img/4.png" onclick="show(4)" />
-          <img src="./img/5.png" onclick="show(5)" />
-          <img src="./img/6.png" onclick="show(6)" />
+          <img src="./img/dice4.png" onclick="show(4)" />
+          <img src="./img/dice5.png" onclick="show(5)" />
+          <img src="./img/dice6.png" onclick="show(6)" />
         </p>
         <p>
           <input type="button" value="다시하기" onclick="clearShow()" />
