@@ -68,7 +68,7 @@
 					$('#msg').text('');
 					
 					for(var i=1;i<=num.length;i++) {
-						var str='<img src="./img/q.png" class="imgBox" id="img'+i+'">';
+						var str='<img src="../img/q.png" class="imgBox" id="img'+i+'">';
 
 						$('#div'+i).html(str);
 					}
@@ -85,18 +85,18 @@
 					var idx=parseInt($(this).attr('id').replace('img',''))-1;
 
 					
-					if ($(this).attr('src')=='./img/q.png') {
+					if ($(this).attr('src')=='../img/q.png') {
 						if (num[idx]==0) {
-							$(this).attr('src','./img/heart.png');
+							$(this).attr('src','../img/heart.png');
 							flag = false;
 							cnt++;
 							if(cnt==8){
-								$('.imgBox').attr('src','./img/heart.png');
+								$('.imgBox').attr('src','../img/heart.png');
 								$('#msg').text('success');
 							}
 						}
 						else {
-							$('.imgBox').attr('src','./img/boom.png');
+							$('.imgBox').attr('src','../img/boom.png');
 							$('#msg').text('false');
 							flag = true;
 						}

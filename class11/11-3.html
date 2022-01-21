@@ -52,7 +52,7 @@
           var userimg = $(this).attr("src");
           $("#img1").attr("src", userimg);
 
-          userimg = userimg.replace("./img/", "");
+          userimg = userimg.replace("../img/", "");
           userimg = userimg.replace(".png", "");
 
           var user = 0;
@@ -69,7 +69,7 @@
           }
 
           var com = Math.floor(Math.random() * 3) + 1;
-          var comimg = "./img/";
+          var comimg = "../img/";
           switch (com) {
             case 1:
               comimg = comimg + "scissorscom.png";
@@ -111,8 +111,8 @@
         });
       });
       function clearShow() {
-        $("#img1").attr("src", "./img/q.png");
-        $("#img2").attr("src", "./img/q.png");
+        $("#img1").attr("src", "../img/q.png");
+        $("#img2").attr("src", "../img/q.png");
         $("#msg").html("");
         total = 0;
         win = 0;
@@ -125,9 +125,9 @@
       <div class="box1">가위바위보게임</div>
       <div class="box2">
         <p>
-          <img src="./img/scissors.png" id="i1" />
-          <img src="./img/rock.png" id="i2" />
-          <img src="./img/paper.png" id="i3" />
+          <img src="../img/scissors.png" id="i1" />
+          <img src="../img/rock.png" id="i2" />
+          <img src="../img/paper.png" id="i3" />
         </p>
 
         <p>
@@ -135,9 +135,9 @@
         </p>
       </div>
       <div id="msgimg">
-        <img src="./img/q.png" id="img1" />
-        <img src="./img/vs.png" />
-        <img src="./img/q.png" id="img2" />
+        <img src="../img/q.png" id="img1" />
+        <img src="../img/vs.png" />
+        <img src="../img/q.png" id="img2" />
       </div>
       <div id="msg"></div>
     </form>

@@ -67,16 +67,16 @@
         var a = Math.floor(ans / 10);
         var b = ans % 10;
         //str="<div class='rdan'>"+dan+'x'+i+'='+(dan*i);
-        str = str + "<img src='./img/" + dan + ".png'>";
-        str = str + "<img src='./img/x.png'>";
-        str = str + "<img src='./img/" + i + ".png'>";
-        str = str + "<img src='./img/equal.png'>";
+        str = str + "<img src='../img/" + dan + ".png'>";
+        str = str + "<img src='../img/x.png'>";
+        str = str + "<img src='../img/" + i + ".png'>";
+        str = str + "<img src='../img/equal.png'>";
         if (a == 0) {
-          str = str + "<img src='./img/blank.png'>";
+          str = str + "<img src='../img/blank.png'>";
         } else {
-          str = str + "<img src='./img/" + a + ".png'>";
+          str = str + "<img src='../img/" + a + ".png'>";
         }
-        str = str + "<img src='./img/" + b + ".png'>";
+        str = str + "<img src='../img/" + b + ".png'>";
         console.log(str);
         document.getElementById("msg").innerHTML = str;
       }

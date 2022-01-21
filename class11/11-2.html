@@ -54,7 +54,7 @@
           //alert("img");
 
           var numsrc = $(this).attr("src");
-          numsrc = numsrc.replace("./img/", "");
+          numsrc = numsrc.replace("../img/", "");
           //replace : 그 부분을 다른걸로 바꿔주는 것 -> 공백으로 바꿔서 콘솔창에서 숫자만 보이도록
           //numsrc = numsrc.replace(".png", "");
           var num = parseInt(numsrc.substring(0, 1));
@@ -79,23 +79,23 @@
       <div class="box1">주사위게임2</div>
       <div class="box2">
         <p>
-          <img src="./img/dice1.png" />
-          <img src="./img/dice2.png" />
-          <img src="./img/dice3.png" />
+          <img src="../img/dice1.png" />
+          <img src="../img/dice2.png" />
+          <img src="../img/dice3.png" />
         </p>
         <p>
-          <img src="./img/dice4.png" />
-          <img src="./img/dice5.png" />
-          <img src="./img/dice6.png" />
+          <img src="../img/dice4.png" />
+          <img src="../img/dice5.png" />
+          <img src="../img/dice6.png" />
         </p>
         <p>
           <input type="button" value="다시하기" />
         </p>
       </div>
       <div id="msgimg">
-        <img src="./img/q.png" id="img1" />
-        <img src="./img/vs.png" />
-        <img src="./img/q.png" id="img2" />
+        <img src="../img/q.png" id="img1" />
+        <img src="../img/vs.png" />
+        <img src="../img/q.png" id="img2" />
       </div>
       <div id="msg"></div>
     </form>
